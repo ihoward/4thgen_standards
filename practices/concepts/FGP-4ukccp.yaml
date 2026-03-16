@@ -1,0 +1,11 @@
+id: FGP-4ukccp
+normalized_name: "version control all standard artifacts"
+
+title: All standard artifacts are stored in version control
+
+description: |
+  Every file that constitutes the standard — practice definitions, taxonomy tables,
+  release manifests, and governance documents — is stored in a distributed version
+  control system (such as Git). Every change is recorded with author, timestamp,
+  and an optional rationale. The full history of the standard is publicly auditable
+  and recoverable.

@@ -1,0 +1,43 @@
+Fourth Generation Standards (4GS) — Licence Terms
+==================================================
+
+This repository contains multiple components under separate licences.
+
+---
+
+Practice data (practices/concepts/, practices/versions/),
+taxonomy files (taxonomy/), and release manifests (releases/)
+are dedicated to the public domain under the Creative Commons Zero v1.0 Universal:
+
+  https://creativecommons.org/publicdomain/zero/1.0/
+
+To the extent possible under law, atypical (Vector Bravo Inc.) has waived all
+copyright and related or neighbouring rights to this work.
+
+---
+
+Specification documents (docs/, README.md, CONTRIBUTING.md, GOVERNANCE.md)
+are licensed under the Creative Commons Attribution 4.0 International:
+
+  https://creativecommons.org/licenses/by/4.0/
+
+You are free to share and adapt these materials for any purpose, provided you
+give appropriate credit to atypical (https://atypical.business).
+
+---
+
+Reference tooling (tools/) is licensed under the Apache License, Version 2.0:
+
+  https://www.apache.org/licenses/LICENSE-2.0
+
+---
+
+Trademark notice
+----------------
+
+The 4GS identifier namespace (FGP-, FGR-, FGT-, FGC- prefixed identifiers) is
+a trademark of atypical (Vector Bravo Inc.). Identifier minting is a governed
+process operated by atypical. Unauthorised minting of identifiers in this
+namespace is not permitted.
+
+For licensing enquiries: licensing@atypical.business

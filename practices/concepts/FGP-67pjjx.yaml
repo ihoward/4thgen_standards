@@ -1,0 +1,11 @@
+id: FGP-67pjjx
+normalized_name: "attributable change history"
+
+title: Every change is attributable and permanently recorded
+
+description: |
+  Every change to any standard artifact is permanently recorded with: the identity
+  of the person who made the change, the timestamp of the change, and the content
+  of the change (what was added, removed, or modified). Changes cannot be silently
+  overwritten. The full history of every decision is recoverable and auditable by
+  any party.

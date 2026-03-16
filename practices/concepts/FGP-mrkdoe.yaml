@@ -1,0 +1,11 @@
+id: FGP-mrkdoe
+normalized_name: "linked data export"
+
+title: The standard supports linked data export (JSON-LD)
+
+description: |
+  The standard can be exported in JSON-LD format, enabling it to be traversed by
+  AI systems, semantic web tools, and knowledge graph applications without manual
+  curation. Practice identifiers resolve to machine-readable descriptions. The
+  JSON-LD export is generated from the structured source files, not maintained
+  separately.

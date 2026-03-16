@@ -1,0 +1,11 @@
+id: FGP-v4lptn
+normalized_name: "multi domain membership without definition changes"
+
+title: A practice may belong to multiple domains without changing its definition
+
+description: |
+  Because taxonomy relationships are stored separately from practice definitions,
+  a practice can be classified under multiple domains simultaneously without
+  modifying the practice concept or version files. Domain reorganisations and
+  multi-domain assignments do not create duplicate definitions or require
+  coordinated edits across multiple files.

@@ -1,0 +1,10 @@
+id: FGP-dsxeyu
+normalized_name: "internal reference integrity checking"
+
+title: Internal references are validated for integrity
+
+description: |
+  All cross-references within the repository are checked for integrity: version
+  files reference valid concept IDs, release manifests reference valid practice
+  version IDs and taxonomy versions, taxonomy edges reference valid node IDs.
+  Broken internal references are detected and reported before a change is merged.

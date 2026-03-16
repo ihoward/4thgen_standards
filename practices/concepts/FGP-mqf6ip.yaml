@@ -1,0 +1,12 @@
+id: FGP-mqf6ip
+normalized_name: "separation of concept identity from version criteria"
+
+title: Concept identity is separated from version criteria
+
+description: |
+  Each practice or indicator exists at two distinct levels: a concept (what the
+  practice represents — stable, never changes once assigned an ID) and a version
+  (the specific criteria used to assess the practice at a point in time). A new
+  version is created when criteria change; the concept ID remains constant. This
+  means the same concept can be cited across versions without ambiguity, and
+  prior assessments remain reproducible against the version they used.

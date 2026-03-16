@@ -1,0 +1,11 @@
+id: FGP-e4i6by
+normalized_name: "native machine readable format"
+
+title: The standard is natively machine-readable without extraction
+
+description: |
+  The authoritative form of the standard is structured data: it does not require
+  scraping, parsing, or extraction from a PDF or word processor document to be
+  consumed programmatically. Any tool builder can read the standard directly from
+  its source files. There is no "real" version in a separate document format —
+  the structured files are the standard.

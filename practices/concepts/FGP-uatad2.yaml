@@ -1,0 +1,11 @@
+id: FGP-uatad2
+normalized_name: "documentation auto generated from source"
+
+title: Published documentation is auto-generated from source files
+
+description: |
+  The human-readable published form of the standard — website, PDF, or document —
+  is generated automatically from the structured source files. There is no
+  divergence between the source data and the published documentation: when the
+  source changes, the published form is regenerated. Manual transcription between
+  data files and published output is not required.

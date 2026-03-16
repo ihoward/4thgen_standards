@@ -1,0 +1,11 @@
+id: FGP-dykfad
+normalized_name: "domain relationships as graph"
+
+title: Taxonomy domain relationships are stored as a queryable graph
+
+description: |
+  The taxonomy — which practices belong to which domains, and how domains relate
+  to each other — is stored as a graph structure (nodes and edges) in a structured,
+  machine-readable format (such as CSV or JSON). The graph is queryable: a tool
+  can retrieve all practices in a domain, traverse domain relationships, or identify
+  practices that span multiple domains without parsing prose.

@@ -1,0 +1,10 @@
+id: FGP-b5gi26
+normalized_name: "namespaced identifier registry"
+
+title: Identifiers are governed through a namespaced registry
+
+description: |
+  The identifier namespace is governed: minting new identifiers in the namespace
+  requires authorisation from the designated standards body. The namespace prefix
+  is distinctive and does not conflict with other standards bodies' namespaces.
+  A registry of all assigned identifiers is publicly accessible.

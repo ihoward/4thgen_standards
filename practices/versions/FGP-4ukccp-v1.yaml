@@ -1,0 +1,30 @@
+id: FGP-4ukccp-v1
+concept_id: FGP-4ukccp
+
+compliance_level: foundational
+
+criteria:
+  required: |
+    The standard's artifacts (practice/indicator definitions, taxonomy, release
+    manifests, and governance documents) are stored in a public Git repository.
+    The repository's commit history is publicly accessible. Every change to any
+    artifact produces a commit with an author identity and timestamp.
+
+  recommended: |
+    Commit messages describe the rationale for changes. The repository uses
+    branch protection rules so that direct pushes to the main branch are blocked;
+    all changes arrive via pull request with review.
+
+rationale: |
+  Without version control, there is no authoritative record of what changed, when,
+  or who authorised it. This is the foundational characteristic of fourth generation
+  standards: the full institutional history of the standard is permanently recorded
+  and publicly auditable.
+
+citations:
+  supporting:
+    - >
+      Crystal-Ornelas, R. et al. (2021). A Guide to Using GitHub for Developing and
+      Versioning Data Standards and Reporting Formats. Earth and Space Science, 8(8).
+      https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021EA001797
+  dissenting: []

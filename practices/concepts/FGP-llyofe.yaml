@@ -1,0 +1,10 @@
+id: FGP-llyofe
+normalized_name: "structured machine readable data format"
+
+title: Practice definitions are stored as structured, machine-readable data
+
+description: |
+  Practice definitions, criteria, taxonomy, and release manifests are stored in
+  structured data formats (such as YAML or JSON) rather than as prose in word
+  processor documents or PDFs. The files are human-writable and human-readable,
+  but also parseable programmatically without scraping or extraction.

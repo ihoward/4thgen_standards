@@ -1,0 +1,11 @@
+id: FGP-yzg67d
+normalized_name: "automated validation on proposed changes"
+
+title: Automated validation runs on every proposed change
+
+description: |
+  A CI/CD pipeline automatically validates proposed changes before they are merged.
+  Validation checks include schema conformance, identifier uniqueness, internal
+  reference integrity, and any other consistency rules defined by the standard.
+  Proposed changes that fail validation are blocked from merging until the issues
+  are resolved. This ensures errors are caught before entering a release.

@@ -1,0 +1,10 @@
+id: FGP-oxsicf
+normalized_name: "schema validation for all artifacts"
+
+title: All standard artifacts are validated against published schemas
+
+description: |
+  A published schema (such as JSON Schema) defines the required and optional fields
+  for each artifact type: practice concepts, practice versions, taxonomy tables, and
+  release manifests. Every artifact in the repository conforms to its schema. The
+  schemas are themselves versioned and stored in the repository.

@@ -1,0 +1,12 @@
+id: FGP-42aeto
+normalized_name: "structured proposal lifecycle"
+
+title: Proposed changes follow a structured, documented lifecycle
+
+description: |
+  Proposed changes progress through defined lifecycle stages (e.g., Proposed →
+  Candidate → Standard) with documented criteria for advancement at each stage.
+  The current stage of every proposal is publicly visible. Stage transitions are
+  recorded in the repository. Proposals that are withdrawn or rejected are
+  documented as such, preserving the institutional memory of what was considered
+  and why it was not accepted.

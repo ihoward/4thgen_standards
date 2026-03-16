@@ -1,0 +1,12 @@
+id: FGP-gsgv2v
+normalized_name: "stable deterministic concept identifiers"
+
+title: Every concept has a stable, deterministic identifier
+
+description: |
+  Every practice, indicator, or concept in the standard is assigned a stable,
+  canonical identifier that persists across versions. Identifiers are derived
+  deterministically from a normalised form of the concept name (e.g., via SHA-256
+  hash), so that independent contributors who describe the same concept arrive at
+  the same identifier without coordination. Identifiers are namespaced to prevent
+  collisions across standards bodies.

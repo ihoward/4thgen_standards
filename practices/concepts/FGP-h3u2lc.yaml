@@ -1,0 +1,12 @@
+id: FGP-h3u2lc
+normalized_name: "taxonomy versioned independently"
+
+title: Taxonomy is versioned independently of practice definitions
+
+description: |
+  The taxonomy (domain structure and practice-domain relationships) has its own
+  version identifier, separate from release versions and practice versions.
+  Taxonomy reorganisations — adding domains, reclassifying practices, adding
+  relationship types — do not require modifying practice definition files, and
+  do not invalidate existing practice versions. A release manifest explicitly
+  cites the taxonomy version it uses.

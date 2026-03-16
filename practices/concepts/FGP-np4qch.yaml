@@ -1,0 +1,12 @@
+id: FGP-np4qch
+normalized_name: "semantic versioning for releases"
+
+title: Releases follow semantic versioning with explicit change rules
+
+description: |
+  Standard releases use semantic versioning (MAJOR.MINOR.PATCH) with defined rules
+  for when each component changes: major versions for breaking changes (practices
+  retired or criteria tightened incompatibly), minor versions for new practices or
+  non-breaking criteria updates, patch versions for corrections that do not affect
+  compliance assessments. Consumers can determine the impact of a version change
+  without reading the full changelog.
