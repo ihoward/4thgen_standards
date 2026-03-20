@@ -1,0 +1,218 @@
+Case Study: Ingesting NEI (a 4GS Standard) vs. Legacy Taxonomy Formats into ACT-ID.io
+======================================================================================
+
+Context
+-------
+ACT-ID.io is a registry of standard activity identifiers for sustainable finance
+taxonomies worldwide. It ingests taxonomy data from 26 sources — 25 sustainable
+finance taxonomies and the Neurodivergent Enablement Indicators (NEI) framework.
+
+The 25 sustainable finance taxonomies are published as PDFs, Excel spreadsheets,
+and CSV exports. NEI is published as structured YAML and CSV files following
+Fourth Generation Standards (4GS) design principles.
+
+This case study documents the concrete, observed differences when the same
+ingestion pipeline (scripts/generate_registry.py in the ACT-ID_website repo)
+processed NEI versus the legacy taxonomy formats.
+
+
+1. Source Format Comparison
+---------------------------
+
+Legacy Taxonomies:
+  - 18 national/regional taxonomy PDFs (Thailand, Malaysia, Australia, etc.)
+  - 1 Excel workbook with 7 sheets, inconsistent column layouts per sheet
+    (EU Taxonomy — the Nuclear and Gas sheet has a different column structure)
+  - 1 CSV with ~40,000 rows and 80+ columns mapping 11 taxonomies
+  - 1 CBRT Excel with merged cells and multi-level headers
+  - Spanish-language PDFs (Mexico, Costa Rica, Panama) with encoding issues
+
+NEI (4GS):
+  - 37 YAML concept files (one per indicator)
+  - 37 YAML version files (criteria and citations per indicator version)
+  - 2 CSV files defining a typed node-edge taxonomy graph
+  - 1 YAML release manifest specifying exactly which versions are canonical
+
+
+2. Technical Advantages
+-----------------------
+
+2.1 Deterministic Identity Resolution
+
+NEI uses SHA-256-derived identifiers (NDI-xxxxxx) from normalized concept names.
+ACT-ID uses the same approach (ACT-A-XXXXXX). Two independent implementations
+ingesting the same NEI indicator will produce the same ACT-ID without central
+coordination.
+
+Legacy taxonomies have no stable identity scheme. "Manufacture of renewable
+energy technologies" in the CSV may not string-match the same activity extracted
+from a PDF. The ingestion pipeline relies on deduplication heuristics — matching
+by truncated name within taxonomy — that can silently fail or produce false
+negatives.
+
+2.2 Version-Aware Ingestion
+
+NEI separates concepts (what the indicator measures) from versions (how it is
+measured at a point in time). When NDI-2cdbgj-v2 is released with updated
+criteria, it can be ingested alongside v1 without breaking existing references.
+The NDR-1.0.0 release manifest declares exactly which indicator versions are
+canonical, making reproducible snapshots trivial.
+
+Legacy taxonomies have no version separation. When the EU updates the Climate
+Delegated Act, the entire Excel must be re-extracted and heuristics must produce
+consistent IDs. There is no canonical machine-readable release manifest — if a
+corrigendum is published, identifying which activities changed requires manual
+document comparison.
+
+2.3 Graph-Native Taxonomy Structure
+
+NEI stores its taxonomy as a proper node-edge graph: CSV tables with typed
+nodes (domains, indicators) and relationships (member_of). An indicator can
+belong to multiple domains without duplication. Reclassifying an indicator
+requires only updating an edge — the indicator's identity and criteria are
+unaffected.
+
+Legacy taxonomies encode hierarchy implicitly: through Excel sheet names,
+activity number prefixes (4.1 = Energy), or PDF section headings.
+Reclassifying an EU activity from "Energy" to "Manufacturing" would require
+changing its activity number, which changes its identity in the ingestion
+pipeline.
+
+2.4 Structured Criteria with Evidence Architecture
+
+Each NEI indicator version specifies criteria across three evidence tiers:
+  - Inferred: observable via public signals without organizational cooperation
+  - Declared: the organization publicly states the practice exists
+  - Validated: evidence submitted to and verified by an accredited verifier
+
+Each tier targets a different evaluator relationship and maps cleanly to
+ACT-ID's canonical_criteria table with structured criteria_type and
+criteria_text fields.
+
+Legacy taxonomy criteria are unstructured paragraphs scraped from PDFs — mixing
+technical screening thresholds, DNSH requirements, substantial contribution
+tests, and metric descriptions into single text blobs with no machine-parseable
+structure. Two separate extraction scripts (populate_criteria.py for CSVs,
+extract_pdf_criteria_v2.py for PDFs using pdfplumber) are required, and many
+criteria are incomplete or conflated.
+
+2.5 Citation Provenance
+
+NEI version files carry inline academic citations with DOIs and full
+bibliographic references linked to specific indicators. The ACT-ID pipeline
+ingested 97 distinct citations across 37 indicators.
+
+Legacy taxonomies get one generic citation per activity: "EU Taxonomy
+Regulation" or "Ghana Green Finance Taxonomy." The user knows the source
+document but not the specific section, page, or evidence basis for that
+particular activity.
+
+2.6 Zero Extraction Loss
+
+The NEI pipeline reads YAML and CSV directly. Zero information is lost or
+transformed during ingestion. The parse_nei() function is 100 lines of
+straightforward file reading.
+
+Legacy taxonomy ingestion involves:
+  - pdfplumber extraction that drops table formatting, footnotes,
+    cross-references, conditional criteria, and non-Latin characters
+  - A ~150-line sector normalization map to canonicalize raw sector strings
+    ("Construction and real estate activities" -> "Construction and Real Estate")
+  - Truncation of activity names to 200 characters
+  - Deduplication across overlapping CSV and PDF sources for the same taxonomy
+  - Manual column layout detection for Excel files with merged cells
+  - Loss of diacritics in Spanish-language taxonomy names
+
+
+3. Advantages for End Users of the ACT-ID Platform
+---------------------------------------------------
+
+3.1 Evaluability
+
+A user viewing an NEI indicator on the ACT-ID detail page gets actionable
+criteria segmented by evaluator role:
+  - A journalist sees inferred criteria (what to look for in Glassdoor reviews)
+  - An HR team sees declared criteria (what to publish)
+  - An auditor sees validated criteria (what to submit to a verifier)
+
+For a legacy taxonomy activity like "Manufacture of hydrogen," the criteria
+text is a scraped paragraph mixing technical thresholds with legal references —
+useful as a starting point, but not structured for any specific workflow.
+
+3.2 Cross-Framework Comparison
+
+NEI measures organizations (workplace infrastructure enabling neurodivergent
+workers). The 25 sustainable finance taxonomies classify economic activities
+(what companies do). This is a fundamentally different assessment axis.
+
+On the ACT-ID mappings page, comparing EU Taxonomy to ASEAN shows
+activity-level equivalences. NEI adds a new dimension: how the organization
+performing those activities treats its neurodivergent workforce. This makes
+ACT-ID more than an activity classifier — it becomes a multi-dimensional
+assessment registry.
+
+3.3 Trustworthy Criteria Provenance
+
+NEI indicator criteria link to specific academic papers (Doyle 2020, Austin &
+Pisano 2017). Users can verify the empirical basis for each indicator.
+
+Legacy taxonomy citations are circular: "this activity is defined by the EU
+Taxonomy Regulation" — stating the legal authority but not the scientific or
+economic rationale behind the specific criteria.
+
+3.4 Reproducible Assessments
+
+NEI's release system (NDR-1.0.0) means a user can state "we evaluated against
+NEI release 1.0.0" and anyone can reconstruct exactly which indicators and
+criteria versions that entailed. Every indicator version is immutable.
+
+Legacy taxonomy versions in ACT-ID are best-effort reconstructions from
+document hashes and version labels. There is no canonical machine-readable
+release manifest.
+
+3.5 Incremental Growth
+
+NEI currently has 7 standard indicators in its first release, with 30 more in
+proposal/candidate stages. As proposals are accepted and new releases are
+published, ACT-ID can ingest them incrementally — YAML files are additive,
+IDs are stable, and the taxonomy graph gains new edges.
+
+Growing legacy taxonomies requires re-running PDF extraction against new
+documents, re-validating deduplication, and hoping the new document's
+formatting is similar enough for the parser to handle.
+
+
+4. Quantitative Summary
+------------------------
+
+                                    NEI (4GS)       Legacy (25 taxonomies)
+Ingestion code                      ~100 lines       ~1,400 lines
+Extraction scripts needed           1                4 (Excel, CSV, CBRT, PDF)
+Sector normalization entries         0                ~150
+Activities ingested                  37               2,502
+Criteria records                     37 (structured)  4,553 (unstructured)
+Citations with bibliographic detail  97               0
+Information loss during ingestion    None             Significant (formatting,
+                                                      footnotes, diacritics,
+                                                      truncation, deduplication)
+Time to add to pipeline              <1 hour          Weeks (cumulative)
+Machine-readable release manifest    Yes (NDR-1.0.0)  No
+
+
+5. Conclusion
+-------------
+
+NEI demonstrates what happens when a standards framework is designed for
+machine consumption from the start. The same ingestion pipeline that required
+weeks of iterative development, four separate extraction scripts, and hundreds
+of lines of normalization heuristics for legacy taxonomies handled NEI in under
+an hour with a single straightforward parser.
+
+The advantages compound for end users: structured criteria, evidence-tiered
+evaluation, academic citation provenance, reproducible assessments, and clean
+incremental growth. If other taxonomy bodies adopted similar 4GS practices —
+structured data formats, deterministic IDs, versioned release manifests, and
+graph-native taxonomy structures — the entire ecosystem of taxonomy tooling
+would be simpler, more accurate, and more maintainable.
+
+NEI is proof of concept that this is achievable.

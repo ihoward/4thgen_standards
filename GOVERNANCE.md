@@ -16,7 +16,12 @@ releases are approved, and how the community participates.
 4. **Separability** — Taxonomy relationships are stored separately from practice
    definitions. Practices can be reclassified without changing their criteria.
 5. **Evidence orientation** — Practice criteria must describe observable, implementable
-   characteristics — not intentions, aspirations, or stated values.
+   characteristics — not intentions, aspirations, or stated values. When NEI (a 4GS
+   standard) was ingested into the ACT-ID.io registry, its three evidence tiers
+   (Inferred, Declared, Validated) mapped cleanly to structured criteria fields —
+   while legacy taxonomy criteria arrived as unstructured paragraphs mixing thresholds,
+   legal references, and metric descriptions into single text blobs. See the
+   [proof of concept](README.md#proof-of-concept-nei-in-actidio) for details.
 
 ---
 

@@ -76,6 +76,12 @@ citations:
   dissenting: []
 ```
 
+Structured citations matter: when NEI was ingested into the ACT-ID.io registry, its
+inline DOI-linked references produced 97 distinct, verifiable citations across 37
+indicators. Legacy taxonomies yielded zero bibliographic citations — only generic
+document-level references like "EU Taxonomy Regulation." See the
+[proof of concept](README.md#proof-of-concept-nei-in-actidio).
+
 ---
 
 ## Identifier generation

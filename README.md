@@ -127,6 +127,30 @@ practices defined here.
 - NEI repository: https://github.com/ihoward/neurodivergent-enablement-indicators
 - Live demonstration: https://atypical.business
 
+### Proof of Concept: NEI in ACT-ID.io
+
+When the [ACT-ID.io](https://act-id.io) registry ingested NEI alongside 25 legacy
+sustainable finance taxonomies, the operational difference was stark:
+
+|                                   | NEI (4GS)              | Legacy (25 taxonomies)         |
+|-----------------------------------|------------------------|--------------------------------|
+| Ingestion code                    | ~100 lines             | ~1,400 lines                   |
+| Extraction scripts                | 1                      | 4 (Excel, CSV, CBRT, PDF)      |
+| Criteria records                  | 37 (structured)        | 4,553 (unstructured)           |
+| Citations with bibliographic data | 97                     | 0                              |
+| Information loss                  | None                   | Significant                    |
+| Time to add to pipeline           | < 1 hour               | Weeks (cumulative)             |
+| Machine-readable release manifest | Yes                    | No                             |
+
+Each row traces directly to a 4GS practice: deterministic identifiers eliminated
+deduplication heuristics, version-aware ingestion preserved historical criteria,
+graph-native taxonomy enabled reclassification without identity changes, structured
+evidence tiers made criteria actionable by role, and inline academic citations gave
+end users verifiable provenance instead of circular legal references.
+
+The full case study is available in
+[`comparing older taxonomies to NEIs a 4GS standard.txt`](comparing%20older%20taxonomies%20to%20NEIs%20a%204GS%20standard.txt).
+
 ---
 
 ## Getting Started
