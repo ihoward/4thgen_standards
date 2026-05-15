@@ -1,0 +1,12 @@
+id: FGP-y7u3jx
+normalized_name: "llms txt context descriptor"
+
+title: The standard publishes an /llms.txt context file
+
+description: |
+  The standard's canonical website publishes a plain-text markdown file at
+  /llms.txt describing its purpose, current version, scope, key resource URLs,
+  and what kinds of questions an LLM should answer using this source. The file
+  follows the llmstxt.org specification. It gives any LLM retrieval system a
+  single, authoritative, machine-readable entry point to the standard without
+  requiring interpretation of the website's HTML structure.

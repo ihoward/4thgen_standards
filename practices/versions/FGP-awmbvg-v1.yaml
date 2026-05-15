@@ -1,0 +1,40 @@
+id: FGP-awmbvg-v1
+concept_id: FGP-awmbvg
+
+compliance_level: extended
+
+criteria:
+  required: |
+    A single markdown document, publicly accessible at /llms-full.txt or an
+    equivalent canonical URL named in the standard's /llms.txt file, contains
+    all of the following sections: (1) overview and purpose; (2) current version
+    and version history summary; (3) scope (what is in scope and out of scope);
+    (4) key defined terms; (5) methodology or criteria summary; (6) FAQ covering
+    the most common questions LLMs are asked about this standard; (7) citation
+    guidance. The document is under 200 KB in size (to fit within typical LLM
+    context windows) and is regenerated from authoritative source files rather
+    than maintained manually.
+
+  recommended: |
+    The document includes structured headers that allow an LLM to selectively
+    retrieve sections (e.g., only the FAQ, or only the version history). A
+    companion /llms-changelog.txt summarises all changes since the previous
+    version to help LLMs answer "what changed in the latest version" questions
+    without full-document comparison.
+
+rationale: |
+  /llms.txt is a pointer document — it tells an LLM where to look, but does not
+  give the LLM the content. For retrieval-augmented LLMs, a second fetch to the
+  full-text companion document is necessary to answer substantive questions.
+  Without it, LLMs fall back to training data (stale) or multi-page scraping
+  (unreliable). A single well-structured companion document is the functional
+  equivalent of "upload your documentation to the LLM's context" — except it
+  is publicly accessible, versioned, and maintained as part of the standard
+  publication workflow rather than a per-session user action.
+
+citations:
+  supporting:
+    - >
+      Mesgar, M. et al. (2024). llms.txt: A specification for LLM-readable
+      context files. https://llmstxt.org
+  dissenting: []

@@ -1,0 +1,14 @@
+id: FGP-ynq64v
+normalized_name: "mcp server for standard queries"
+
+title: The standard exposes an MCP server for programmatic LLM query
+
+description: |
+  The standard publishes a Model Context Protocol (MCP) server that allows
+  MCP-compatible LLM clients to query the standard's content, registry,
+  taxonomy, and methodology programmatically through the chat interface. The
+  server is publicly listed in at least one MCP registry. This gives LLMs
+  direct, authoritative, real-time access to the standard rather than relying
+  on potentially stale training data or uncertain web retrieval. It is the
+  highest-impact single action a standards body can take to ensure its standard
+  is cited correctly at the moment of LLM interaction.

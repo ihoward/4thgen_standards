@@ -1,0 +1,13 @@
+id: FGP-am3s6q
+normalized_name: "version supersession declaration"
+
+title: Superseded versions explicitly declare the current version
+
+description: |
+  Every page or document belonging to a superseded version of the standard
+  carries a machine-readable and human-visible declaration identifying the
+  current version and linking to it. The declaration is present in the page's
+  HTML response (not lazy-loaded by JavaScript) so that LLM retrieval systems
+  and web crawlers see it. This directly addresses the most common LLM error
+  with standards: citing an outdated version with no awareness that a newer
+  version exists.

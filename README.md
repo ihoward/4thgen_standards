@@ -23,7 +23,7 @@ qualify as fourth generation?*
 | 1st | Paper documents | Static, not searchable, geographic distribution only |
 | 2nd | Electronic documents (PDF, HTML) | Distributable online, but unstructured |
 | 3rd | Database-backed, offered as data | Queryable, but siloed, not interoperable, no provenance |
-| **4th** | **Revision-controlled, relatable, metadata-rich, LLM-accessible** | Versionable, citable, machine-consumable, community-governed |
+| **4th** | **Revision-controlled, relatable, metadata-rich, LLM-accessible** | Versionable, citable, machine-consumable, community-governed, queryable by LLMs at the point of interaction |
 
 ---
 
@@ -88,9 +88,12 @@ A standard may claim fourth generation status at one of three levels:
 ├── GOVERNANCE.md
 │
 ├── docs/
-│   ├── framework.md          # Conceptual overview and design rationale
-│   ├── methodology.md        # How practices are defined and validated
-│   └── adoption_guide.md     # Step-by-step adoption pathway for standards organisations
+│   ├── framework.md                          # Conceptual overview and design rationale
+│   ├── methodology.md                        # How practices are defined and validated
+│   ├── adoption_guide.md                     # Step-by-step adoption pathway for standards organisations
+│   ├── llm_readiness_for_standards_bodies.md # 4GS public guidance: how a standard becomes citable by LLMs
+│   ├── llm_readiness_rubric.md               # Scoreable rubric with objective tests per criterion
+│   └── llm_discoverability_strategy.md       # Strategic background note
 │
 ├── practices/
 │   ├── concepts/             # One YAML file per practice concept (FGP-xxxxxx.yaml)
@@ -116,6 +119,19 @@ A standard may claim fourth generation status at one of three levels:
 
 - [`FGR-1.0.0`](releases/FGR-1.0.0.yaml) — 12 practices across 5 domains (Foundational release)
 
+**Proposed (FGC-00001 — pending):**
+Five LLM Accessibility practices derived from production experience with XframeworkID and ACT-ID.io:
+
+| ID | Practice | Level |
+|---|---|---|
+| [`FGP-y7u3jx`](practices/concepts/FGP-y7u3jx.yaml) | Publishes `/llms.txt` context descriptor | Foundational |
+| [`FGP-a5svie`](practices/concepts/FGP-a5svie.yaml) | Every artifact has a stable, resolvable HTTPS URL | Foundational |
+| [`FGP-am3s6q`](practices/concepts/FGP-am3s6q.yaml) | Superseded versions declare the current version | Foundational |
+| [`FGP-awmbvg`](practices/concepts/FGP-awmbvg.yaml) | Publishes an LLM-ingestible companion document | Extended |
+| [`FGP-ynq64v`](practices/concepts/FGP-ynq64v.yaml) | Exposes an MCP server for programmatic LLM query | Full |
+
+See [`contributions/FGC-00001.md`](contributions/FGC-00001.md) for the full proposal and evidence base.
+
 ---
 
 ## Reference Implementation
@@ -127,20 +143,32 @@ practices defined here.
 - NEI repository: https://github.com/ihoward/neurodivergent-enablement-indicators
 - Live demonstration: https://atypical.business
 
+## Partnerships and Adoption
+
+| Partner | Role |
+|---|---|
+| **ACT-ID.io** | Third-party production registry consuming NEI alongside 25 legacy taxonomies |
+| **Sarona Asset Management** | Partner for 4GS/ACT-ID integration in Asia (social investment arm of the Australian government) |
+| **Climate Bonds Initiative** | Pilot partner for assessing 4GS integration into their database methodologies |
+| **ISSB / IFRS Foundation** | Visvesh Sridharan (ISSB Technical Staff, Standards Interoperability) briefed on 4GS; follow-up planned mid-April to explore interoperability pilot. Michael Jantzi (former ISSB board member, founder of Sustainalytics) has offered support |
+
+Grant applications for 4GS infrastructure are pending with NLnet (EU) and the Sovereign
+Tech Fund (Germany).
+
 ### Proof of Concept: NEI in ACT-ID.io
 
-When the [ACT-ID.io](https://act-id.io) registry ingested NEI alongside 25 legacy
-sustainable finance taxonomies, the operational difference was stark:
+The [ACT-ID.io](https://act-id.io) registry ingests NEI alongside 25 legacy sustainable
+finance taxonomies (mostly PDFs). Here is what it takes to add one taxonomy to the pipeline:
 
-|                                   | NEI (4GS)              | Legacy (25 taxonomies)         |
-|-----------------------------------|------------------------|--------------------------------|
-| Ingestion code                    | ~100 lines             | ~1,400 lines                   |
-| Extraction scripts                | 1                      | 4 (Excel, CSV, CBRT, PDF)      |
-| Criteria records                  | 37 (structured)        | 4,553 (unstructured)           |
-| Citations with bibliographic data | 97                     | 0                              |
-| Information loss                  | None                   | Significant                    |
-| Time to add to pipeline           | < 1 hour               | Weeks (cumulative)             |
-| Machine-readable release manifest | Yes                    | No                             |
+|                                   | NEI (4GS)                                      | Typical PDF taxonomy                               |
+|-----------------------------------|-------------------------------------------------|----------------------------------------------------|
+| Extraction approach               | Read YAML & CSV directly                        | pdfplumber scraping + manual layout detection       |
+| Taxonomy-specific code            | 0 lines                                         | ~50–100 lines (page ranges, table layouts, normalization) |
+| Criteria output                   | Structured (required / recommended / rationale) | Unstructured text blob                              |
+| Citations with bibliographic data | 97 (with DOIs)                                  | 0                                                  |
+| Information loss                  | None                                            | Table formatting, footnotes, diacritics             |
+| Time to add to pipeline           | < 1 hour                                        | Days                                               |
+| Machine-readable release manifest | Yes                                             | No                                                 |
 
 Each row traces directly to a 4GS practice: deterministic identifiers eliminated
 deduplication heuristics, version-aware ingestion preserved historical criteria,
@@ -148,7 +176,7 @@ graph-native taxonomy enabled reclassification without identity changes, structu
 evidence tiers made criteria actionable by role, and inline academic citations gave
 end users verifiable provenance instead of circular legal references.
 
-The full case study is available in
+The full case study is available at https://atypical.business/4gs/case-study/ and in
 [`comparing older taxonomies to NEIs a 4GS standard.txt`](comparing%20older%20taxonomies%20to%20NEIs%20a%204GS%20standard.txt).
 
 ---
@@ -157,6 +185,7 @@ The full case study is available in
 
 - To **understand the framework**, read [`docs/framework.md`](docs/framework.md).
 - To **adopt these practices**, read [`docs/adoption_guide.md`](docs/adoption_guide.md).
+- To **make your standard citable by LLMs**, read [`docs/llm_readiness_for_standards_bodies.md`](docs/llm_readiness_for_standards_bodies.md) and self-assess against [`docs/llm_readiness_rubric.md`](docs/llm_readiness_rubric.md).
 - To **propose a change**, read [`CONTRIBUTING.md`](CONTRIBUTING.md).
 - To **evaluate a standard's generation level**, use the release manifest in [`releases/`](releases/).
 

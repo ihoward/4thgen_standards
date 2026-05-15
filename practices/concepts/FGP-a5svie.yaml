@@ -1,0 +1,13 @@
+id: FGP-a5svie
+normalized_name: "stable resolvable url per artifact"
+
+title: Every standard artifact has a stable, resolvable HTTPS URL
+
+description: |
+  Every defined concept, criterion, version, and term in the standard is
+  reachable at a permanent HTTPS URL that resolves without redirect, without
+  JavaScript, and without authentication. URLs include the version where
+  applicable. Superseded version URLs resolve forever to the content of that
+  version. A "current version" canonical URL exists and redirects to the latest
+  stable version. This extends the identifier stability requirement (FGP-gsgv2v)
+  to the HTTP access layer — an identifier is only LLM-citable if it resolves.

@@ -1,0 +1,38 @@
+id: FGP-am3s6q-v1
+concept_id: FGP-am3s6q
+
+compliance_level: foundational
+
+criteria:
+  required: |
+    Every page or document that belongs to a superseded version of the standard
+    includes, in the HTML response body (not injected via JavaScript), a visible
+    notice that: (1) identifies the page as belonging to a superseded version;
+    (2) names the current version; (3) links to the current version's equivalent
+    page or the current version index. The notice is present as static HTML
+    content, not lazy-loaded, so web crawlers and LLM retrieval systems see it.
+
+  recommended: |
+    The supersession notice is also encoded as JSON-LD using schema.org's
+    isReplacedBy property, so structured data extractors can traverse the version
+    chain programmatically. A version-chain page lists all versions in order with
+    release dates and links, enabling LLMs to reason about the standard's history
+    without full-text scraping.
+
+rationale: |
+  Citing the wrong version of a standard is the single most common LLM error when
+  discussing standards bodies. It occurs because: (a) LLM training data is
+  temporally frozen, typically 1-2 years behind the current version; (b) retrieval
+  systems fetch the version that appears in search results, which may not be the
+  current one; (c) there is no machine-readable signal on superseded pages that
+  a newer version exists. A static supersession notice costs nothing to add and
+  directly corrects (b) and (c). It cannot fix (a) alone, but combined with
+  FGP-y7u3jx (/llms.txt declaring the current version) it ensures that any
+  retrieval path converges on version awareness.
+
+citations:
+  supporting:
+    - >
+      Schema.org. isReplacedBy property.
+      https://schema.org/isReplacedBy
+  dissenting: []

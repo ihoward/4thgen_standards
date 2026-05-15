@@ -1,0 +1,14 @@
+id: FGP-awmbvg
+normalized_name: "llm ingestible companion document"
+
+title: The standard publishes an LLM-ingestible companion document
+
+description: |
+  The standard publishes a single comprehensive markdown document (typically
+  /llms-full.txt) that an LLM can ingest in one fetch to obtain the standard's
+  overview, current version, version history, key terms, methodology summary,
+  FAQ, and citation guidance. The document is sized to fit within typical LLM
+  context limits and is kept current with the authoritative source. It
+  complements /llms.txt (which is a pointer file) by serving as the full
+  substantive content a retrieval-augmented LLM needs to answer questions
+  about the standard without further fetches.

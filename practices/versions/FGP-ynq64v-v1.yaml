@@ -1,0 +1,48 @@
+id: FGP-ynq64v-v1
+concept_id: FGP-ynq64v
+
+compliance_level: full
+
+criteria:
+  required: |
+    The standard publishes a Model Context Protocol (MCP) server that: (1) exposes
+    at minimum the standard's current practice/criterion definitions and defined
+    terms as queryable resources; (2) is installable from a public package registry
+    (PyPI, npm, or equivalent) or accessible as a hosted endpoint; (3) is listed
+    in at least one public MCP registry (Anthropic's MCP server directory, mcp.so,
+    Smithery, or PulseMCP); (4) implements the MCP specification version current
+    at the time of publication. The server must be operable by a Claude user
+    following only the published installation instructions, without access to
+    internal systems.
+
+  recommended: |
+    The MCP server exposes: (a) lookup by practice/criterion identifier; (b) full-text
+    search across the standard; (c) comparison queries ("how does this standard define
+    X compared to [other standard]?"); (d) the implementation registry (certified
+    entities, software implementations, regulators that reference the standard).
+    The server's tool descriptions are written to surface naturally in LLM tool
+    selection (i.e., the tool descriptions answer the question "when should an LLM
+    call this?" unambiguously).
+
+rationale: |
+  All other LLM accessibility practices improve how well a standard is cited from
+  training data or web retrieval. An MCP server is qualitatively different: it
+  gives an LLM real-time, authoritative, structured access to the standard at the
+  moment of query. No retrieval latency, no version uncertainty, no third-party
+  interpretation. As of mid-2026, no major standards body has published an MCP
+  server — first-mover advantage is real and short-lived. For comparison-oriented
+  standards (where the standard's value is precisely in adjudicating between
+  competing definitions), the MCP server is not just an accessibility convenience
+  but the canonical query interface for the standard's core function.
+  XframeworkID's xframework-mcp package (May 2026) demonstrated a 1-2 week build
+  timeline for a registry-oriented MCP server.
+
+citations:
+  supporting:
+    - >
+      Anthropic (2025). Model Context Protocol specification.
+      https://modelcontextprotocol.io
+    - >
+      Anthropic (2025). MCP server registry.
+      https://github.com/modelcontextprotocol/servers
+  dissenting: []

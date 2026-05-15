@@ -1,0 +1,39 @@
+id: FGP-a5svie-v1
+concept_id: FGP-a5svie
+
+compliance_level: foundational
+
+criteria:
+  required: |
+    Every practice, criterion, version, and defined term published by the standard
+    is reachable at a distinct HTTPS URL. URLs include the version identifier where
+    applicable (e.g., /v4.1/criteria/buildings). Superseded version URLs return
+    HTTP 200 with original content (not HTTP 301/302 to a current-version page).
+    A canonical current-version URL exists and redirects to the most recent stable
+    release. None of the above URLs require JavaScript execution or authentication
+    to return content.
+
+  recommended: |
+    URL patterns are human-readable and version-explicit throughout (not opaque
+    hash-based paths). A /versions index page lists all published versions with
+    their URLs and release dates. The sitemap.xml includes all artifact URLs with
+    accurate lastmod dates so LLM retrieval systems can determine currency.
+
+rationale: |
+  An identifier is only as good as its resolvability. LLMs cite URLs, not internal
+  identifiers; a stable deterministic ID (FGP-gsgv2v) that does not resolve to a
+  stable URL is invisible to retrieval-augmented LLMs. The most common form of
+  LLM misrepresentation of standards is citation of stale versions — this occurs
+  because current-version redirects overwrite superseded content, destroying the
+  URL's ability to identify a specific version. Permanent per-version URLs are
+  the structural fix.
+
+citations:
+  supporting:
+    - >
+      Berners-Lee, T. (1998). Cool URIs don't change. W3C.
+      https://www.w3.org/Provider/Style/URI
+    - >
+      IETF RFC 7231 (2014). Hypertext Transfer Protocol (HTTP/1.1): Semantics
+      and Content. §6.4 Redirection. https://datatracker.ietf.org/doc/html/rfc7231
+  dissenting: []

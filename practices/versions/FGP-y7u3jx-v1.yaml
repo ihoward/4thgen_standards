@@ -1,0 +1,38 @@
+id: FGP-y7u3jx-v1
+concept_id: FGP-y7u3jx
+
+compliance_level: foundational
+
+criteria:
+  required: |
+    A plain-text markdown file is reachable at https://[canonical-domain]/llms.txt.
+    The file includes: (1) the standard's name and one-sentence purpose; (2) the
+    current version identifier; (3) the URL of the machine-readable source
+    (repository or structured data endpoint); (4) a list of URLs an LLM should
+    consult when answering questions about the standard. The file follows the
+    llmstxt.org format. The URL resolves without authentication or JavaScript.
+
+  recommended: |
+    The /llms.txt file also includes: the standard's scope (what it covers and
+    what it explicitly does not cover); the type of questions an LLM should and
+    should not answer using this source; a pointer to /llms-full.txt if it exists.
+    The file is updated within 48 hours of any new release of the standard.
+
+rationale: |
+  LLMs that support retrieval (ChatGPT search, Perplexity, Claude with web tools)
+  fetch context at query time. Without a designated entry point, they construct
+  their understanding from whatever they crawl — often third-party summaries,
+  press releases, or outdated content. /llms.txt is a 1-2 hour investment that
+  gives every retrieval-enabled LLM a direct, authoritative starting point.
+  XframeworkID shipped /llms.txt in May 2026 and observed immediate improvement
+  in citation specificity for registry queries.
+
+citations:
+  supporting:
+    - >
+      Mesgar, M. et al. (2024). llms.txt: A specification for LLM-readable context
+      files. https://llmstxt.org
+    - >
+      Anthropic (2025). Model Context Protocol specification.
+      https://modelcontextprotocol.io
+  dissenting: []
