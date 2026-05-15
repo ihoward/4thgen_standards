@@ -183,9 +183,9 @@ The full case study is available at https://atypical.business/4gs/case-study/ an
 
 ## Getting Started
 
-- To **understand the framework**, read [`docs/framework.md`](docs/framework.md).
+- To **understand the framework**, read [`docs/framework.md`](docs/framework.md) or visit [atypical.business/4gs/](https://atypical.business/4gs/).
 - To **adopt these practices**, read [`docs/adoption_guide.md`](docs/adoption_guide.md).
-- To **make your standard citable by LLMs**, read [`docs/llm_readiness_for_standards_bodies.md`](docs/llm_readiness_for_standards_bodies.md) and self-assess against [`docs/llm_readiness_rubric.md`](docs/llm_readiness_rubric.md).
+- To **make your standard citable by LLMs**, read [`docs/llm_readiness_for_standards_bodies.md`](docs/llm_readiness_for_standards_bodies.md) and self-assess against [`docs/llm_readiness_rubric.md`](docs/llm_readiness_rubric.md) — or visit [atypical.business/4gs/llm-readiness/](https://atypical.business/4gs/llm-readiness/).
 - To **propose a change**, read [`CONTRIBUTING.md`](CONTRIBUTING.md).
 - To **evaluate a standard's generation level**, use the release manifest in [`releases/`](releases/).
 
